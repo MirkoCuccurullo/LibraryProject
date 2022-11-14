@@ -1,0 +1,20 @@
+
+.tab {
+    -fx-background-color: #aaa;
+}
+
+#gridPaneAddItem, #gridPaneAddMember, #gridPaneEditItem, #gridPaneEditMember, #VBLogin {
+    -fx-background-color: #fafcea;
+}
+
+#panel, .tab-pane {
+    -fx-background-color: #fafcea;
+}
+
+#paneLeft, #paneRight {
+    -fx-background-color: #aaa;
+}
+
+.button {
+    -fx-background-color: #84caf5;
+}

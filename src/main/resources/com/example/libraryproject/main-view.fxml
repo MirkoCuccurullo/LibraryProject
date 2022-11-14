@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <tabs>
+        <Tab text="Lending/receiving">
+            <content>
+                <AnchorPane fx:id="panel" minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="180.0" prefWidth="200.0">
+                    <children>
+                        <VBox prefHeight="372.0" prefWidth="600.0">
+                            <children>
+                                <Label fx:id="labelWelcome" text="Welcome ">
+                                    <VBox.margin>
+                                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                    </VBox.margin>
+                                    <font>
+                                        <Font name="System Bold" size="16.0" />
+                                    </font>
+                                </Label>
+                        <Button fx:id="btnImportItems" onAction="#onButtonImportClick" mnemonicParsing="false" text="Import Items">
+                           <VBox.margin>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </VBox.margin>
+                        </Button>
+                                <HBox prefHeight="309.0" prefWidth="600.0">
+                                    <children>
+                                        <Pane fx:id="paneLeft" prefHeight="306.0" prefWidth="265.0">
+                                            <HBox.margin>
+                                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                            </HBox.margin>
+                                            <children>
+                                                <TextField fx:id="fieldItemCode" layoutX="41.0" layoutY="45.0" promptText="Item code" />
+                                                <TextField fx:id="fieldMemberIdentifier" layoutX="41.0" layoutY="93.0" promptText="Member identifier" />
+                                                <Button fx:id="buttonLend" layoutX="41.0" layoutY="155.0" mnemonicParsing="false" onAction="#onButtonLendClick" text="Lend item" />
+                                                <Label fx:id="labelLendingPanel" layoutX="41.0" layoutY="207.0" />
+                                            </children>
+                                        </Pane>
+                                        <Pane fx:id="paneRight" prefHeight="266.0" prefWidth="256.0">
+                                            <HBox.margin>
+                                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                            </HBox.margin>
+                                            <children>
+                                                <TextField fx:id="fieldReceivedItem" layoutX="28.0" layoutY="49.0" onTextChange="#onFieldTextChange" promptText="Item code" />
+                                                <Button fx:id="buttonReceiveItem" layoutX="28.0" layoutY="94.0" mnemonicParsing="false" onAction="#onButtonReceiveClick" text="Receive item" />
+                                                <Label fx:id="labelReceivePanel" layoutX="28.0" layoutY="149.0" />
+                                    <Button fx:id="btnPayFine" layoutX="28.0" layoutY="187.0" mnemonicParsing="false" onAction="#onButtonPayFineClick" text="Pay Fine" visible="false" />
+                                    <Label fx:id="lblLateDays" layoutX="28.0" layoutY="133.0" text="Item is late by: " visible="false" />
+                                    <Label fx:id="lblTotalFine" layoutX="28.0" layoutY="157.0" text="Total fine: €" visible="false" />
+                                            </children>
+                                        </Pane>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </AnchorPane>
+            </content>
+        </Tab>
+        <Tab text="Collection">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="180.0" prefWidth="200.0">
+                    <children>
+                        <Label layoutX="24.0" layoutY="33.0" text="Items">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Label>
+                        <TableView fx:id="tvItems" layoutX="24.0" layoutY="95.0" prefHeight="200.0" prefWidth="544.0">
+                            <columns>
+                                <TableColumn prefWidth="61.200042724609375" text="Item code">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="itemCode" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn prefWidth="73.199951171875" text="Available">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="status" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn prefWidth="83.39999389648438" text="Title">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="title" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn prefWidth="127.19998168945312" text="Author">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="author" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn prefWidth="120" text="Expected return date">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="returnDate" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                            </columns>
+                        </TableView>
+                        <HBox layoutX="24.0" layoutY="304.0" prefHeight="53.0" prefWidth="279.0">
+                            <children>
+                                <Button fx:id="btnAddItem" mnemonicParsing="false" onAction="#onButtonAddItemClick" text="Add Item">
+                                    <HBox.margin>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <Button fx:id="btnEditItem" mnemonicParsing="false" onAction="#onButtonEditItemClick" text="Edit Item">
+                                    <HBox.margin>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <Button fx:id="btnRemoveItem" mnemonicParsing="false" onAction="#onButtonRemoveItemClick" text="Delete Item">
+                                    <HBox.margin>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    </HBox.margin>
+                                </Button>
+                            </children>
+                        </HBox>
+                    </children>
+                </AnchorPane>
+            </content>
+        </Tab>
+        <Tab text="Member">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="180.0" prefWidth="200.0">
+                    <children>
+                        <Label layoutX="24.0" layoutY="33.0" text="Members">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Label>
+                        <TableView fx:id="tvMembers" layoutX="24.0" layoutY="95.0" prefHeight="200.0" prefWidth="525.0">
+                            <columns>
+                                <TableColumn prefWidth="75.0" text="Identifier">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="id" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn prefWidth="93.20001220703125" text="First Name">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="firstName" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn prefWidth="159.79998779296875" text="Last Name">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="surname" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn prefWidth="111.4000244140625" text="Date Of Birth">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="dateOfBirth" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                            </columns>
+                        </TableView>
+                        <HBox layoutX="24.0" layoutY="304.0" prefHeight="54.0" prefWidth="354.0">
+                            <children>
+                                <Button fx:id="btnAddMembers" mnemonicParsing="false" onAction="#onButtonAddMemberClick" text="Add Member">
+                                    <HBox.margin>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <Button fx:id="btnEditMembers" mnemonicParsing="false" onAction="#onButtonEditMemberClick" text="Edit Member">
+                                    <HBox.margin>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <Button fx:id="btnRemoveMembers" mnemonicParsing="false" onAction="#onButtonRemoveMemberClick" text="Delete Member">
+                                    <HBox.margin>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    </HBox.margin>
+                                </Button>
+                            </children>
+                        </HBox>
+                    </children>
+                </AnchorPane>
+            </content>
+        </Tab>
+    </tabs>
+</TabPane>
