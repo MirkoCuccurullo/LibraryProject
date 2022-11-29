@@ -7,4 +7,4 @@
 
 Mirko Cuccurullo (691362)
 
-_GitHub repository_ : [click here](https://github.com/MirkoCuccurullo/endAssignment)
+_GitHub repository_ : [click here](https://github.com/MirkoCuccurullo/LibraryProject)
